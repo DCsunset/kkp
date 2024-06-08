@@ -13,9 +13,7 @@
       perSystem = { pkgs, ... }: {
         packages.default = pkgs.stdenv.mkDerivation {
           name = "kkp";
-          src = pkgs.lib.sourceByRegex ./. [
-            "^kkp\.el$"
-          ];
+          src = ./.;
           buildInputs = [
             (pkgs.emacsWithPackages (epkgs: with epkgs; [ compat ]))
           ];
