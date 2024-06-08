@@ -629,8 +629,7 @@ does not have focus, as input from this terminal cannot be reliably read."
       ;; parameter here to not send the query multiple times to the
       ;; terminal
       (set-terminal-parameter terminal 'kkp--setup-started t)
-      (kkp--query-terminal-async "?u\e[c"
-                                 '(("\e[?" . kkp--terminal-setup)) terminal))))
+      (kkp--terminal-setup))))
 
 ;;;###autoload
 (defun kkp-disable-in-terminal ()
