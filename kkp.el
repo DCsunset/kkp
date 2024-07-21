@@ -296,8 +296,8 @@ It is one of the symbols `shift', `alt', `control', `super',
 (defvar kkp--setup-visited-terminal-list
   nil "Internal variable to track visited terminals after enabling `global-kkp-mode´.")
 
-(defvar kkp--suspended-terminal-list
-  nil "Internal variable to track suspended terminals which have enabled KKP in activate state.")
+(defvar kkp--suspended-terminal-list nil
+  "Internal variable to track suspended terminals which have enabled KKP.")
 
 (defun kkp--mod-bits (modifier)
   "Return the KKP encoding bits that should be interpreted as MODIFIER.
@@ -649,7 +649,8 @@ does not have focus, as input from this terminal cannot be reliably read."
 
 (defun kkp--display-symbol-keys-p (orig-fun &rest args)
   "Advice function for display-symbols-key-p ORIG-FUN with ARGS.
-This ensures display-symbols-key-p returns non nil in a terminal with KKP enabled."
+This ensures display-symbols-key-p returns non nil
+in a terminal with KKP enabled."
   (or
    (member (kkp--selected-terminal) kkp--active-terminal-list)
    (apply orig-fun args)))
